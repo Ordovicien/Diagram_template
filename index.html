@@ -4,50 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flow API Duplication</title>
+  <!-- Lien vers la feuille de styles externe -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Lien vers la bibliothèque mxGraph -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mxgraph/4.2.2/js/mxClient.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    #graphContainer {
-      width: 90%;
-      height: 90%;
-      border: 1px solid #ddd;
-      background-color: #f9f9f9;
-    }
-  </style>
 </head>
 <body>
   <h1>Flow API Duplication</h1>
   <div id="graphContainer"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const container = document.getElementById('graphContainer');
-      if (!mxClient.isBrowserSupported()) {
-        container.innerHTML = '<p>Votre navigateur ne supporte pas cette application.</p>';
-        return;
-      }
-      const graph = new mxGraph(container);
-
-      const parent = graph.getDefaultParent();
-      graph.getModel().beginUpdate();
-      try {
-        const user = graph.insertVertex(parent, null, 'Utilisateur', 100, 50, 120, 60, 'fillColor=#D9EAD3;');
-        const apiFront = graph.insertVertex(parent, null, 'API Front', 300, 50, 160, 60, 'fillColor=#D0E0FF;');
-        const apiBack = graph.insertVertex(parent, null, 'API Back', 600, 50, 180, 60, 'fillColor=#FFE599;');
-        const apiContacts = graph.insertVertex(parent, null, 'API Contacts', 900, 50, 140, 60, 'fillColor=#F6CECE;');
-        graph.insertEdge(parent, null, 'Connexion', user, apiFront);
-      } finally {
-        graph.getModel().endUpdate();
-      }
-    });
-  </script>
+  <!-- Lien vers le script JavaScript externe -->
+  <script src="js/graph.js"></script>
 </body>
 </html>
